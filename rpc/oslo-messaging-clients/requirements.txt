@@ -1,0 +1,3 @@
+oslo.messaging
+#qpid-python
+pyngus
