@@ -21,7 +21,7 @@ to play in.
 RUNNING
 -------
 
-1) run a local instance of qpidd:
+1) run a local instance of a rabbitmq
 
 2) make sure your python environment has oslo.messaging available.  If
 it does not, you can use the config.sh script to set up a virtual
