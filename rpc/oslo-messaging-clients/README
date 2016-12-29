@@ -35,6 +35,7 @@ to use the 'deactivate' command to exit the environment when done!
 3) run a server (best to do this in its own dedicated terminal as it blocks):
 
 $ ./rpc-server --url rabbit://127.0.0.1 Server01
+$ ./rpc-server --url rabbit://guest:guest@127.0.0.1 Server01
 Running server, name=Server01 exchange=my-exchange topic=my-topic namespace=my-namespace
 
 4) run the client, invoking "methodA" on topic "my-topic" with
