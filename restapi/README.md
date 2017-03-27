@@ -32,18 +32,18 @@ versions.Controller.call()
 versions.Controller.index()        
 
 ----------
-wsgi.Router它负责分发 HTTP Request 到其管理的某个 Resource.    
+wsgi.Router它负责分发HTTP Request到其管理的某个Resource.    
 
- - 属性 resources 是个数组，用来保存所有的 Resource 的 Controller 类的instance；每个Resource拥有一个该数组的数组项，比如self.resources['versions'] =versions.create_resource() 会为 versions 核心资源创建一个 Resource 并保存到resources 中。
+ - 属性resources是个数组，用来保存所有的Resource的Controller类的instance；每个Resource拥有一个该数组的数组项，比如self.resources['versions'] =versions.create_resource()会为versions核心资源创建一个Resource并保存到resources中。
  
- - 属性 mapper 用来保存保存所有 resource的 routes 供 RoutesMiddleware 使用。它其实是一张路由表。每个表项表示一个 URL 和 controller 以及 action 的映射关系
+ - 属性mapper用来保存保存所有resource的routes供RoutesMiddleware使用。它其实是一张路由表。每个表项表示一个URL和controller以及action的映射关系
  
- - 属性 routes 是 routes.middleware.RoutesMiddleware 的实例，它其实是一个 WSGIapp，它使用 mapper 和 _dispatch_进行初始化。功能是根据 URL 得到 controller 和它的 action。
+ - 属性routes是routes.middleware.RoutesMiddleware的实例，它其实是一个WSGIapp，它使用mapper和 _dispatch_进行初始化。功能是根据URL得到 controller和它的action。
 
 在service启动阶段，通过paste deploy调用restapi.router:API.factory
-router.py的 __init__ 方法被调用，加载资源，建立资源的路由表，然后把生成的 mapper 传给初始化了的 routes.middleware.RoutesMiddleware。
+router.py的__init__方法被调用，加载资源，建立资源的路由表，然后把生成的mapper传给初始化了的routes.middleware.RoutesMiddleware。
 
-在处理 HTTP Request 阶段，它负责接收经过 Middleware filters 处理过的 HTTP Request，再把它转发给 RoutesMiddleware 实例，它会使用 mapper 得到 Request 的URL 对应的 controller 和 action，并设置到 Request 的 environ 中，然后再调用 APIRoutes 的 dispatch 方法。该方法会从 environ 中得到controller，然后调用其 __call_ 方法，实现消息的分发。
+在处理HTTP Request阶段，它负责接收经过Middleware filters处理过的HTTP Request，再把它转发给RoutesMiddleware实例，它会使用mapper得到 Request的URL对应的controller和action，并设置到Request的environ中，然后再调用APIRoutes的dispatch方法。该方法会从environ中得到controller，然后调用其 __call_ 方法，实现消息的分发。
 
 ----------
 * How to run?
