@@ -23,13 +23,13 @@
   paste.app_factory = restapi.router:API.factory    
 
 
-调用顺序
-router.API.__init__()
-wsgi.Router.__init__()
-wsgi.Router.call()
-wsgi.Router.__dispatch()
-versions.Controller.call()
-versions.Controller.index()
+- 调用顺序    
+router.API.__init__()    
+wsgi.Router.__init__()    
+wsgi.Router.call()    
+wsgi.Router.__dispatch()        
+versions.Controller.call()    
+versions.Controller.index()        
 
 ----------
 wsgi.Router它负责分发 HTTP Request 到其管理的某个 Resource.    
