@@ -17,9 +17,9 @@
        openstackservice/restapi/restapi/wsgi.py    
  功能:
  
-     1：构造url到资源的映射，路由规则的创建    
-     2：资源的加载    
-     3：Rest API请求路由到正确的WSGI Application    
+       1：构造url到资源的映射，路由规则的创建    
+       2：资源的加载    
+       3：Rest API请求路由到正确的WSGI Application    
    
  - paste-api.ini  
  
