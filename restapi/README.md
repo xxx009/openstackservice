@@ -2,34 +2,39 @@
  - WSGI Server    
  code: openstackservice/restapi/restapi/server.py    
  功能：
+ 
         1：启动wsgi server， 接受api请求        
         2：Past deploy加载wsgi Application  
         
  - WSGI Application    
  code：openstackservice/restapi/restapi/versions.py    
- 功能：    
+ 功能：
+ 
        1：Rest API的具体实现    
     
  - WSGI Middleware    
- code：openstackservice/restapi/restapi/router.py    
+ code：openstackservice/restapi/restapi/router.py 
        openstackservice/restapi/restapi/wsgi.py    
- 功能：    
-   1：构造url到资源的映射，路由规则的创建    
-   2：资源的加载    
-   3：Rest API请求路由到正确的WSGI Application    
+ 功能:
+ 
+     1：构造url到资源的映射，路由规则的创建    
+     2：资源的加载    
+     3：Rest API请求路由到正确的WSGI Application    
    
- - paste-api.ini    
-  [app:restapi]    
-  paste.app_factory = restapi.router:API.factory    
+ - paste-api.ini  
+ 
+        [app:restapi]    
+        paste.app_factory = restapi.router:API.factory    
 
 
-- 调用顺序    
-router.API.__init__()    
-wsgi.Router.__init__()    
-wsgi.Router.call()    
-wsgi.Router.__dispatch()        
-versions.Controller.call()    
-versions.Controller.index()        
+- 调用顺序  
+
+      router.API.__init__()    
+      wsgi.Router.__init__()    
+      wsgi.Router.call()    
+      wsgi.Router.__dispatch()        
+      versions.Controller.call()    
+      versions.Controller.index()        
 
 ----------
 wsgi.Router它负责分发HTTP Request到其管理的某个Resource.    
