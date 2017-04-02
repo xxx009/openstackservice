@@ -1,8 +1,6 @@
-
-
 ## WSGI Server/gateway
 
- wsgi server可以理解为一个符合wsgi规范的web server，接收request请求，封装一系列环境变量，按照wsgi规范调用注册的wsgi app，最后将response返回给客户端。文字很难解释清楚wsgi server到底是什么东西，以及做些什么事情，最直观的方式还是看wsgi server的实现代码。以python自带的wsgiref为例，wsgiref是按照wsgi规范实现的一个简单wsgi server。
+wsgi server可以理解为一个符合wsgi规范的web server，接收request请求，封装一系列环境变量，按照wsgi规范调用注册的wsgi app，最后将response返回给客户端。文字很难解释清楚wsgi server到底是什么东西，以及做些什么事情，最直观的方式还是看wsgi server的实现代码。以python自带的wsgiref为例，wsgiref是按照wsgi规范实现的一个简单wsgi server。
 ### wsgi server 基本工作流程
 
 -  服务器创建socket，监听端口，等待客户端连接。
