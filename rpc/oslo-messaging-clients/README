@@ -42,6 +42,8 @@ Running server, name=Server01 exchange=my-exchange topic=my-topic namespace=my-n
 arguments "arg1" and "arg2":
 
 $ ./rpc-client methodA arg1 arg2
+> $ ./rpc-client echo test=10
+
 Calling server on topic my-topic, server=None exchange=my-exchange namespace=my-namespace fanout=None
 
 See the source for the server (rpc-server) for the RPC methods it supports.
