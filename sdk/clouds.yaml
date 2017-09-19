@@ -1,0 +1,12 @@
+clouds:
+  test_cloud:
+    region_name: RegionOne
+    auth:
+      auth_url: http://192.168.1.102:5000/v3
+      username: admin
+      password: 8e5b16aae8c24e59
+      project_name: admin
+    example:
+      image_name: cirros
+      flavor_name: m1.small
+      network_name: private
