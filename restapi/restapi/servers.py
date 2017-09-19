@@ -4,7 +4,10 @@ import webob.dec
 
 from webob import Response
 
-class Controller(object):
+class ServersController(object):
+    
+    """The Server API base controller class for the OpenStack API."""
+
     def __init__(self):
         # TODO
         self.version = "0.1"
@@ -22,4 +25,6 @@ class Controller(object):
         return self.index(request)
 
 def create_resource():
-    return Controller()
+    return ServersController()
+
+#https://github.com/openstack/nova/blob/master/nova/api/openstack/compute/servers.py

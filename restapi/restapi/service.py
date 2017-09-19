@@ -14,6 +14,9 @@ sys.path.insert(0,module_dir)
 bind_host = "127.0.0.1"
 bind_port = 8080
 
+"""Provides ability to launch API from a 'paste' configuration."""
+""" https://github.com/openstack/nova/blob/master/nova/service.py.WSGIService()"""
+
 def server(app_name, conf_file):
     app = load_paste_app(app_name,conf_file) 
     serve = make_server(bind_host,bind_port,app) 
