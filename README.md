@@ -44,7 +44,7 @@ for flavor in flavors:
 
 
 ## Usage in Openstack
-[https://github.com/openstack/nova/blob/master/nova/db/sqlalchemy/models.py
+https://github.com/openstack/nova/blob/master/nova/db/sqlalchemy/models.py
 
 ## 参考
- http://docs.sqlalchemy.org/en/rel_1_0/orm/tutorial.html#working-with-related-objects
+http://docs.sqlalchemy.org/en/rel_1_0/orm/tutorial.html#working-with-related-objects
