@@ -5,25 +5,7 @@ We issue a GET request to http://glance.example.com/v1/images/71c675ab-d94f-49cd
 retrieve metadata for that image as well as the image itself encoded into the response body.
 
 1：获取参数
-[root@train swift]# openstack project list
-+----------------------------------+---------+
-| ID                               | Name    |
-+----------------------------------+---------+
-| 04faa63700744397b976cb98b4a9dd7f | service |
-| 05f07406418d4d3684bc1f8b7c68d52b | demo    |
-| 466b6504fd454107b5221c3a7b4454ba | admin   |
-+----------------------------------+---------+
-[root@train swift]# openstack user list
-+----------------------------------+---------+
-| ID                               | Name    |
-+----------------------------------+---------+
-| 026b050e5cad4e2aaf1f8dc11693bc69 | admin   |
-| 3c8c17484c7a454f87714fe15778d883 | cinder  |
-| 6dff331a5f4648839f0708c4e2fcbfce | nova    |
-| b12c9396f6c84c32b46609dc9c5094d4 | glance  |
-| b446387cb30145e0996b1b8421137deb | demo    |
-| d7cd8377a0694f6a87e3c8799abecb53 | neutron |
-+----------------------------------+---------+
+----------------------------------+---------+
 [root@train swift]# openstack token issue
 +------------+----------------------------------+
 | Field      | Value                            |
@@ -34,6 +16,7 @@ retrieve metadata for that image as well as the image itself encoded into the re
 | user_id    | 026b050e5cad4e2aaf1f8dc11693bc69 |
 +------------+----------------------------------+
 
+[root@train swift]# glance image-list
 
 2：编写代码
 import tempfile
