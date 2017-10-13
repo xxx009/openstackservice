@@ -20,8 +20,9 @@
        router.py 定义各种url和controller直接的影射关系，最终由wsgi.py的类Router加载这些mapper    
        
         1：构造url到资源的映射，路由规则的创建    
-        2：资源的加载       
+        2：资源的加载    
           3：Rest API请求路由到正确的WSGI Application    
+          
    
  - paste-api.ini  
  
