@@ -1,18 +1,17 @@
 ## WSGI Server/gateway
 
-wsgi server可以理解为一个符合wsgi规范的web server，接收request请求，封装一系列环境变量，按照wsgi规范调用注册的wsgi app，最后将response返回给客户端。文字很难解释清楚wsgi server到底是什么东西，以及做些什么事情，最直观的方式还是看wsgi server的实现代码。以python自带的wsgiref为例，wsgiref是按照wsgi规范实现的一个简单wsgi server。
+wsgi server可以理解为一个符合wsgi规范的web server，接收request请求，封装一系列环境变量，按照wsgi规范调用注册的wsgi app，最后将response返回给客户端。以python自带的wsgiref为例，wsgiref是按照wsgi规范实现的一个简单wsgi server。
 ### wsgi server 基本工作流程
 
 -  服务器创建socket，监听端口，等待客户端连接。
 -  当有请求来时，服务器解析客户端信息放到环境变量environ中，并调用绑定的handler来处理请求。
-- handler解析这个http请求，将请求信息例如method，path等放到environ中。
+-  handler解析这个http请求，将请求信息例如method，path等放到environ中。
 -  wsgi handler再将一些服务器端信息也放到environ中，最后服务器信息，客户端信息，本次请求信息全部都保存到了环境变量environ中。
--   wsgi handler 调用注册的wsgi app，并将environ和回调函数传给wsgi app
- wsgi app 将reponse header/status/body 回传给wsgi handler
+-  wsgi handler 调用注册的wsgi app，并将environ和回调函数传给wsgi app，wsgi app 将reponse header/status/body 回传给wsgi handler
 -  最终handler还是通过socket将response信息塞回给客户端。
 
 ## WSGI Application
-wsgi application就是一个普通的callable对象，当有请求到来时，wsgi server会调用这个wsgi app。这个对象接收两个参数，通常为environ,start_response。environ就像前面介绍的，可以理解为环境变量，跟一次请求相关的所有信息都保存在了这个环境变量中，包括服务器信息，客户端信息，请求信息。start_response是一个callback函数，wsgi application通过调用start_response，将response headers/status 返回给wsgi server。此外这个wsgi app会return 一个iterator对象 ，这个iterator就是response body。这么空讲感觉很虚，对着下面这个简单的例子看就明白很多了。
+wsgi application就是一个普通的callable对象，当有请求到来时，wsgi server会调用这个wsgi app。这个对象接收两个参数，通常为environ,start_response。environ就像前面介绍的，可以理解为环境变量，跟一次请求相关的所有信息都保存在了这个环境变量中，包括服务器信息，客户端信息，请求信息。start_response是一个callback函数，wsgi application通过调用start_response，将response headers/status 返回给wsgi server。此外这个wsgi app会return 一个iterator对象 ，这个iterator就是response body。下面举个例子。
 ###  下面这个例子是一个最简单的wsgi app，
  引自http://www.python.org/dev/peps/pep-3333/
 
@@ -48,7 +47,7 @@ httpd.serve_forever()
 
 ---
 ## Paste配置文件
-配置文件分为多个section，每个section的名字的格式是TYPE:NAME，每个section中参数的格式一般是KEY = VALUE。我们分别来看看各种TYPE
+配置文件分为多个section，每个section的名字的格式是TYPE:NAME，每个section中参数的语法设置一般为 KEY = VALUE。我们分别来看看各种TYPE
 
 - TYPE = composite
 
