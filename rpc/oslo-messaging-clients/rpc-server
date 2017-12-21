@@ -56,6 +56,8 @@ def main(argv=None):
 
     global debug
     global quiet
+    
+    # <server name>指的是给服务命名，
     _usage = """Usage: %prog [options] <server name>"""
     parser = optparse.OptionParser(usage=_usage)
     parser.add_option("--topic", action="store", default="my-topic",
